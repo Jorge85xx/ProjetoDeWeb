@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Lembretes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="imagens/logo.png" alt="Logo do Sistema de Lembretes">
+        <h1>Sistema de Lembretes</h1>
+    </header>
+
+    <main>
+        <section id="cadastro">
+            <h2>Cadastrar Lembrete</h2>
+            <form id="form-cadastro">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" required></textarea>
+
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+        </section>
+
+        <section id="lembretes">
+            <h2>Lista de Lembretes</h2>
+            <ul id="lista-lembretes">
+                <!-- Lembretes serão inseridos aqui -->
+            </ul>
+        </section>
+
+        <section id="edicao" style="display: none;">
+            <h2>Editar Lembrete</h2>
+            <form id="form-edicao">
+                <label for="titulo-editar">Título:</label>
+                <input type="text" id="titulo-editar" name="titulo-editar" required>
+
+                <label for="descricao-editar">Descrição:</label>
+                <textarea id="descricao-editar" name="descricao-editar" required></textarea>
+
+                <label for="data-editar">Data:</label>
+                <input type="date" id="data-editar" name="data-editar" required>
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
