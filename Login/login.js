@@ -17,6 +17,9 @@ class SistemaUsuarios {
 
         this.formLogin.addEventListener('submit', this.fazerLogin.bind(this));
         this.formCadastro.addEventListener('submit', this.fazerCadastro.bind(this));
+
+        document.getElementById('show-cadastro').addEventListener('click', this.mostrarCadastro.bind(this));
+        document.getElementById('show-login').addEventListener('click', this.mostrarLogin.bind(this));
     }
 
     mostrarMensagem(elemento, mensagem) {
@@ -26,6 +29,18 @@ class SistemaUsuarios {
 
     esconderMensagem(elemento) {
         elemento.style.display = 'none';
+    }
+
+    mostrarCadastro(event) {
+        event.preventDefault();
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('cadastro-section').style.display = 'block';
+    }
+
+    mostrarLogin(event) {
+        event.preventDefault();
+        document.getElementById('cadastro-section').style.display = 'none';
+        document.getElementById('login-section').style.display = 'block';
     }
 
     fazerLogin(event) {
@@ -58,7 +73,7 @@ class SistemaUsuarios {
             this.usuarios.push(novoUsuario);
             localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
             alert('Cadastro realizado com sucesso!');
-            window.location.href = '../Projeto/index.html';  // Redireciona para o sistema de lembretes após cadastro
+            this.mostrarLogin(event);  // Mostra a tela de login após o cadastro
         }
     }
 }
