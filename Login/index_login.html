@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>Formulário de Login e Cadastro</title>
+</head>
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <main class="w-100 n-auto form-container">
+        <div id="login-section">
+            <form id="form-login">
+                <img src="img/imagem.png" alt="" class="nb-4" height="57" width="72">
+                <h1 class="h3 nb-3 fw-normal">Faça login</h1>
+                
+                <div id="login-mensagem" class="alert alert-danger" style="display: none;"></div>
+
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="login-nome" placeholder="Nome de usuário" required>
+                    <label for="login-nome">Nome de usuário</label>
+                </div>
+                
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="login-senha" placeholder="Senha" required>
+                    <label for="login-senha">Senha</label>
+                </div>
+
+                <div class="form-check text-start my-3">
+                    <input type="checkbox" class="form-check-input" id="CheckFlexDefault"/>
+                    <label class="form-check-label" for="CheckFlexDefault">Lembre de mim</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2">Entrar</button>
+            </form>
+            <p class="mt-3 text-center">
+                Não tem uma conta? <a href="#" id="show-cadastro">Cadastre-se</a>
+            </p>
+        </div>
+
+        <div id="cadastro-section" style="display: none;">
+            <form id="form-cadastro">
+                <img src="img/imagem.png" alt="" class="nb-4" height="57" width="72">
+                <h1 class="h3 nb-3 fw-normal">Cadastre-se</h1>
+                
+                <div id="cadastro-mensagem" class="alert alert-danger" style="display: none;"></div>
+                
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="cadastro-nome" placeholder="Nome de usuário" required>
+                    <label for="cadastro-nome">Nome de usuário</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="cadastro-senha" placeholder="Senha" required>
+                    <label for="cadastro-senha">Senha</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">Cadastrar</button>
+            </form>
+            <p class="mt-3 text-center">
+                Já tem uma conta? <a href="#" id="show-login">Faça login</a>
+            </p>
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>

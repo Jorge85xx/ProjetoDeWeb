@@ -6,8 +6,8 @@ body {
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #e2ded2;
+    color: darkslategrey;
     padding: 20px;
     text-align: center;
 }
@@ -45,7 +45,7 @@ input, textarea {
 button {
     margin-top: 15px;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #84a997;
     color: white;
     border: none;
     border-radius: 5px;
@@ -53,7 +53,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #7A9C8C;
 }
 
 ul {
@@ -77,10 +77,14 @@ ul li .acoes {
 }
 
 ul li .acoes button {
-    background-color: #ff5722;
+    background-color: #A0C1CF;
     color: white;
 }
 
 ul li .acoes button:hover {
-    background-color: #e64a19;
+    background-color: #89A5B1;
+}
+
+img{
+    width: 100px;
 }

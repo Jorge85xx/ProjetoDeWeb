@@ -11,6 +11,11 @@ class SistemaLembretes {
     constructor() {
         this.lembretes = JSON.parse(localStorage.getItem('lembretes')) || [];
         this.usuarioAtual = JSON.parse(localStorage.getItem('usuarioAtual'));
+
+        if (!this.usuarioAtual) {
+            window.location.href = '../Login/index_login.html';  // Redireciona para o login se não houver usuário logado
+        }
+
         this.lembreteEmEdicao = null;
         this.formCadastro = document.getElementById('form-cadastro');
         this.formEdicao = document.getElementById('form-edicao');
@@ -88,6 +93,11 @@ class SistemaLembretes {
 
     atualizarStorage() {
         localStorage.setItem('lembretes', JSON.stringify(this.lembretes));
+    }
+
+    sair() {
+        localStorage.removeItem('usuarioAtual')
+        window.location.href('../Login/index_login.html')
     }
 }
 
