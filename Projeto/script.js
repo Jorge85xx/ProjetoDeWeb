@@ -1,14 +1,16 @@
 class Lembrete {
-    constructor(titulo, descricao, data) {
+    constructor(titulo, descricao, data, usuario) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
+        this.usuario = usuario;
     }
 }
 
 class SistemaLembretes {
     constructor() {
         this.lembretes = JSON.parse(localStorage.getItem('lembretes')) || [];
+        this.usuarioAtual = JSON.parse(localStorage.getItem('usuarioAtual'));
         this.lembreteEmEdicao = null;
         this.formCadastro = document.getElementById('form-cadastro');
         this.formEdicao = document.getElementById('form-edicao');
@@ -21,7 +23,9 @@ class SistemaLembretes {
 
     renderizarLembretes() {
         this.listaLembretes.innerHTML = '';
-        this.lembretes.forEach((lembrete, index) => {
+        const lembretesUsuarioAtual = this.lembretes.filter(lembrete => lembrete.usuario.nome === this.usuarioAtual.nome);
+
+        lembretesUsuarioAtual.forEach((lembrete, index) => {
             const li = document.createElement('li');
             li.innerHTML = `
                 <strong>${lembrete.titulo}</strong> - ${lembrete.descricao} (Data: ${lembrete.data})
@@ -40,7 +44,12 @@ class SistemaLembretes {
         const descricao = document.getElementById('descricao').value;
         const data = document.getElementById('data').value;
 
-        const novoLembrete = new Lembrete(titulo, descricao, data);
+        if (!this.usuarioAtual) {
+            alert('Você precisa estar logado para cadastrar lembretes.');
+            return;
+        }
+
+        const novoLembrete = new Lembrete(titulo, descricao, data, this.usuarioAtual);
         this.lembretes.push(novoLembrete);
         this.atualizarStorage();
         this.renderizarLembretes();
@@ -62,11 +71,13 @@ class SistemaLembretes {
         const descricao = document.getElementById('descricao-editar').value;
         const data = document.getElementById('data-editar').value;
 
-        this.lembretes[this.lembreteEmEdicao] = new Lembrete(titulo, descricao, data);
-        this.atualizarStorage();
-        this.renderizarLembretes();
-        this.formEdicao.reset();
-        document.getElementById('edicao').style.display = 'none';
+        if (this.lembreteEmEdicao !== null) {
+            this.lembretes[this.lembreteEmEdicao] = new Lembrete(titulo, descricao, data, this.usuarioAtual);
+            this.atualizarStorage();
+            this.renderizarLembretes();
+            this.formEdicao.reset();
+            document.getElementById('edicao').style.display = 'none';
+        }
     }
 
     excluirLembrete(index) {
