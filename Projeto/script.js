@@ -13,7 +13,8 @@ class SistemaLembretes {
         this.usuarioAtual = JSON.parse(localStorage.getItem('usuarioAtual'));
 
         if (!this.usuarioAtual) {
-            window.location.href = '../Login/index_login.html';  // Redireciona para o login se não houver usuário logado
+            localStorage.removeItem('usuarioAtual');
+            window.location.href = '../Login/index_login.html'; 
         }
 
         this.lembreteEmEdicao = null;
@@ -97,7 +98,7 @@ class SistemaLembretes {
 
     sair() {
         localStorage.removeItem('usuarioAtual')
-        window.location.href('../Login/index_login.html')
+        window.location.href = '../Login/index_login.html'
     }
 }
 
